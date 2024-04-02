@@ -106,6 +106,12 @@ private async getStoredNotes() {
 }
 ```
 
-Conclusion
+## Conclusion
 The security enhancements implemented in the Totally Secure Math App significantly mitigate the risk of data breaches and unauthorized access. By addressing the core vulnerabilities and applying best practices, we've made the app safer for users, protecting their data and improving overall trust in the app's security measures.
+
+## Reference:
+[1] React Native, "Security," React Native, 2024. [Online]. Available: https://reactnative.dev/docs/security. [Accessed: Apr. 1, 2024].
+
+[2] OWASP, "OWASP Top Ten," OWASP Foundation, 2024. [Online]. Available: https://owasp.org/www-project-top-ten/. [Accessed: Apr. 1, 2024].
+
 
