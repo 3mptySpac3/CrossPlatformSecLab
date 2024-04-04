@@ -1,71 +1,63 @@
-# Totally Secure Math App Security Enhancements
+# 🛡️ Totally Secure Math App Security Enhancements 🛡️
 
-This document outlines the security improvements made to the Totally Secure Math App, addressing several critical security vulnerabilities, including insecure data storage, improper authentication, code injection, insufficient input validation, and insecure code practices. Our goal was to enhance the app's security posture significantly while maintaining its functionality.
+This document **outlines the security improvements** made to the *Totally Secure Math App*, addressing several critical security vulnerabilities. Our goal? To **enhance the app's security posture** significantly while maintaining its functionality. 
 
-## Security Vulnerabilities and Improvements
+---
 
-### 1. Insecure Data Storage
+##  Security Vulnerabilities and Improvements
 
-#### Vulnerability
-User notes were previously stored using AsyncStorage without encryption, making the data vulnerable to unauthorized access on rooted devices.
+### 📦 1. **Insecure Data Storage** 
 
-#### Improvement
-Implemented encrypted storage using `react-native-encrypted-storage` to ensure that notes data is securely encrypted before being stored locally.
+- **Vulnerability**: User notes were previously stored using `AsyncStorage` without encryption, making the data vulnerable on rooted devices.
+  
+- **Improvement**: Implemented *encrypted storage* using `react-native-encrypted-storage` to secure notes data.
 
-```bash
-npm install react-native-encrypted-storage
-```
+  ```bash
+  npm install react-native-encrypted-storage
+  ```
 
-## 2. Improper Authentication
+## 🏦 2. Improper Authentication 
+- **Vulnerability**: Utilized hardcoded credentials for authentication, a severe security risk.
 
-### Vulnerability
-The app utilized hardcoded credentials for authentication, posing a severe security risk of credential extraction.
-
-### Improvement
-Transitioned to using @react-native-keychain/react-native-keychain for secure credential storage, leveraging the platform's secure storage facilities.
+- **Improvement** : Transitioned to using `@react-native-keychain/react-native-keychain` for secure credential storage.
 
 ```bash
 npm install @react-native-keychain/react-native-keychain
 ```
 
-## 3. Code Injection
+## 💉 3. Code Injection 
+- **Vulnerability**: Usage of `eval()` for evaluating mathematical expressions, vulnerable to code injection.
 
-### Vulnerability
-The eval() function was used to evaluate mathematical expressions, creating a vulnerability to code injection attacks.
-
-### Improvement
-Replaced eval() with mathjs library to safely evaluate mathematical expressions without executing arbitrary code.
+- **Improvement**: Replaced `eval()` with `mathjs` library for *safe evaluation*.
 
 ```bash
 npm install mathjs
 ```
 
-## 4. Insufficient Input Validation
+## 🪪 4. Insufficient Input Validation
 
-### Vulnerability
-Lack of input validation for mathematical expressions could lead to unintended code execution or app crashes.
+- **Vulnerability**: Lack of input validation for mathematical expressions could lead to unintended code execution or app crashes.
 
-### Improvement
-Implemented thorough input validation using regex and conditional checks to ensure only valid mathematical characters and structures are processed.
+- **Improvement**: Implemented *thorough input validation* using regex and conditional checks to ensure only valid mathematical characters and structures are processed.
 
-## 5. Insecure Code Practices
+## 👟 5. Insecure Code Practices 
 
-### Vulnerabilities
-Use of AsyncStorage for sensitive data storage.
-Hardcoded user credentials.
-Lack of error handling potentially leading to information leakage.
+- **Vulnerabilities**
+  - Use of `AsyncStorage` for sensitive data storage.
+  - Hardcoded user credentials.
+  - Lack of error handling potentially leading to information leakage.
 
-### Improvements
-Encrypted sensitive data before storage.
-Implemented secure authentication mechanism.
-Enhanced error handling across the app to manage exceptions securely.
+- **Improvements**
+  - Encrypted sensitive data before storage.
+  - Implemented secure authentication mechanism.
+  - Enhanced error handling across the app to manage exceptions securely.
 
 
-## Detailed Changes
-Below are explanations for the specific changes made to address the identified vulnerabilities:
+## 🔧 Detailed Changes
+*Below are explanations for the specific changes made to address the identified vulnerabilities:*
 
 
-#### Secure Evaluation of Mathematical Expressions
+#### 🔐 Secure Evaluation of Mathematical Expressions
 ```bash
 // Import evaluate from mathjs for secure expression evaluation
 import { evaluate } from 'mathjs';
@@ -79,7 +71,7 @@ function evaluateEquation() {
   }
 }
 ```
-#### Secure Authentication Mechanism
+#### 🔑 Secure Authentication Mechanism
 ```bash
 // Use react-native-keychain for secure storage of credentials
 import * as Keychain from '@react-native-keychain/react-native-keychain';
@@ -93,7 +85,7 @@ async function login() {
   }
 }
 ```
-#### Encrypted Notes Storage
+#### 📂 Encrypted Notes Storage
 ```bash
 // Use react-native-encrypted-storage for secure notes storage
 import EncryptedStorage from 'react-native-encrypted-storage';
@@ -106,10 +98,10 @@ private async getStoredNotes() {
 }
 ```
 
-## Conclusion
-The security enhancements implemented in the Totally Secure Math App significantly mitigate the risk of data breaches and unauthorized access. By addressing the core vulnerabilities and applying best practices, we've made the app safer for users, protecting their data and improving overall trust in the app's security measures.
+## Conclusion 
+The security enhancements implemented in the **Totally Secure Math App** significantly mitigate the risk of data breaches and unauthorized access. By addressing the core vulnerabilities and applying best practices, we've made the app **safer for users**, protecting their data and **improving overall trust** in the app's security measures.
 
-## Reference:
+## 📜Reference📜
 [1] React Native, "Security," React Native, 2024. [Online]. Available: https://reactnative.dev/docs/security. [Accessed: Apr. 1, 2024].
 
 [2] OWASP, "OWASP Top Ten," OWASP Foundation, 2024. [Online]. Available: https://owasp.org/www-project-top-ten/. [Accessed: Apr. 1, 2024].
